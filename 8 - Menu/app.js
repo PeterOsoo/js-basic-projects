@@ -71,34 +71,25 @@ const menu = [
 		img: "./images/item-9.jpeg",
 		desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
 	},
+	{
+		id: 10,
+		title: "mtura ",
+		category: "dinner",
+		price: 46.99,
+		img: "./images/item-10.jpeg",
+		desc: `served in the dark and sweet when bought bit by bit .`,
+	},
 ]
 
 const sectionCenter = document.querySelector(".section-center")
-const filterBtns = document.querySelectorAll(".filter-btn")
+
+const container = document.querySelector(".btn-container")
 
 // load items
 window.addEventListener("DOMContentLoaded", function () {
 	// console.log("rateng its working ")
 	displayMenuItems(menu)
-})
-
-// filter items
-filterBtns.forEach(function (btn) {
-	btn.addEventListener("click", function (e) {
-		// console.log(e.currentTarget.dataset.id)
-		const category = e.currentTarget.dataset.id
-		const menuCategory = menu.filter(function (menuItem) {
-			if (menuItem.category === category) {
-				return menuItem
-			}
-		})
-		console.log(menuCategory)
-		if (category == "all") {
-			displayMenuItems(menu)
-		} else {
-			displayMenuItems(menuCategory)
-		}
-	})
+	displayMenuButtons()
 })
 
 function displayMenuItems(menuItems) {
@@ -120,4 +111,49 @@ function displayMenuItems(menuItems) {
 	displayMenu = displayMenu.join("")
 	// console.log(displayMenu)
 	sectionCenter.innerHTML = displayMenu
+}
+
+// function to display menu buttons
+const displayMenuButtons = () => {
+	const categories = menu.reduce(
+		function (values, item) {
+			// if item not in array add
+			if (!values.includes(item.category)) {
+				values.push(item.category)
+			}
+			return values
+		},
+		["all"]
+	)
+	console.log(categories)
+
+	const categoryBtns = categories
+		.map(function (category) {
+			return `<button class="filter-btn" type="button" data-id=${category}>${category}</button>`
+		})
+		.join("")
+	container.innerHTML = categoryBtns
+	console.log(categoryBtns)
+
+	// when add item dynamicallycan only access once its added to the DOM
+	const filterBtns = document.querySelectorAll(".filter-btn")
+
+	// filter items
+	filterBtns.forEach(function (btn) {
+		btn.addEventListener("click", function (e) {
+			// console.log(e.currentTarget.dataset.id)
+			const category = e.currentTarget.dataset.id
+			const menuCategory = menu.filter(function (menuItem) {
+				if (menuItem.category === category) {
+					return menuItem
+				}
+			})
+			console.log(menuCategory)
+			if (category == "all") {
+				displayMenuItems(menu)
+			} else {
+				displayMenuItems(menuCategory)
+			}
+		})
+	})
 }
