@@ -29,9 +29,16 @@ const items = document.querySelectorAll(".deadline-format h4")
 
 // console.log(items)
 
-let futureDate = new Date(2021, 4, 27, 20, 30, 0)
+let tempDate = new Date()
+let tempYear = tempDate.getFullYear()
+let tempMonth = tempDate.getMonth()
+let tempDay = tempDate.getDate()
+
+// setting fixed future date - old way
+// let futureDate = new Date(2021, 4, 27, 20, 30, 0)
 // console.log(futureDate)
 
+const futureDate = new Date(tempYear, tempMonth, tempDay + 10, 18, 30, 0)
 const year = futureDate.getFullYear()
 // console.log(year)
 
@@ -102,6 +109,11 @@ const getRemainingTime = () => {
 	items.forEach((item, index) => {
 		item.innerHTML = format(values[index])
 	})
+
+	if (t < 0) {
+		clearInterval(countdown)
+		deadline.innerHTML = `<h4 class="expired">Sorry, this giveaway has expired. Deal  is over </h4>`
+	}
 }
 
 //countdown
