@@ -228,6 +228,7 @@ Grocery List
   text-transform: capitalize;
 }
 
+/* text  */
 .alert-danger {
   color: #721c24;
   background: #f8d7da;
