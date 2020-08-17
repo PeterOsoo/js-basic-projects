@@ -17,12 +17,11 @@ let editElement
 let editFlag = false
 let editID = ""
 
-// ****** EVENT LISTENERS **********
-// submit form
-form.addEventListener("submit", addItem)
+// event listeners
+// const deleteBtn = document.querySelector('.delete-btn')
 
 // ****** FUNCTIONS **********
-function addItem(e) {
+const addItem = e => {
 	e.preventDefault()
 	const value = grocery.value
 	// console.log(value)
@@ -44,6 +43,11 @@ function addItem(e) {
 		  <button type="button" class="delete-btn"> <i class="fas fa-trash"></i></button>
 		</div>`
 
+		const deleteBtn = element.querySelector(".delete-btn")
+		const editBtn = element.querySelector(".edit-btn")
+		deleteBtn.addEventListener("click", deleteItem)
+		editBtn.addEventListener("click", editItem)
+
 		//append child
 		list.appendChild(element)
 
@@ -63,6 +67,22 @@ function addItem(e) {
 		displayAlert("Please enter value", "danger")
 	}
 }
+
+const clearItems = () => {
+	const items = document.querySelectorAll(".grocery-items")
+
+	if (items.length > 0) {
+		items.forEach(item => {
+			list.removeChild(item)
+		})
+	}
+	container.classList.remove("show-container")
+	displayAlert("empty list", "danger")
+
+	setBackToDefault()
+	// localStorage.removeItem('list')
+}
+
 // display alert
 
 const displayAlert = (text, action) => {
@@ -76,6 +96,7 @@ const displayAlert = (text, action) => {
 		alert.classList.remove(`alert-${action}`)
 	}, 2000)
 }
+//clear items
 
 // / set back to default
 const setBackToDefault = () => {
@@ -86,12 +107,36 @@ const setBackToDefault = () => {
 	submitBtn.textContent = "submit"
 }
 
+const deleteItem = e => {
+	const element = e.currentTarget.parentElement.parentElement
+	const id = element.dataset.id
+	list.removeChild(element)
+
+	if (list.children.length === 0) {
+		container.classList.remove("show-container")
+	}
+	displayAlert("item removed", "danger")
+	setBackToDefault()
+	// remove from local storage
+	// removeFromLocalStorage(id)
+}
+const editItem = () => {
+	console.log("item edited")
+}
+
+// ****** LOCAL STORAGE **********
 const addToLocalStorage = (id, value) => {
 	console.log("added to local storage")
 }
 
-// ****** LOCAL STORAGE **********
-
+const removeFromLocalStorage = id => {
+	console.log("removed from local storage")
+}
 // ****** SETUP ITEMS **********
 
-// 6.58.08
+// ****** EVENT LISTENERS **********
+// submit form
+form.addEventListener("submit", addItem)
+
+//clear items
+clearBtn.addEventListener("click", clearItems)
