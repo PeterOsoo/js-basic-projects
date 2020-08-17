@@ -62,7 +62,13 @@ const addItem = e => {
 		//set back to default
 		setBackToDefault()
 	} else if (value && editFlag) {
-		console.log("editing")
+		editElement.innerHTML = value
+		displayAlert("value change", "success")
+
+		// edit local storage
+		editLocalStorage(editID, value)
+
+		setBackToDefault()
 	} else {
 		displayAlert("Please enter value", "danger")
 	}
@@ -120,8 +126,20 @@ const deleteItem = e => {
 	// remove from local storage
 	// removeFromLocalStorage(id)
 }
-const editItem = () => {
-	console.log("item edited")
+const editItem = e => {
+	const element = e.currentTarget.parentElement.parentElement
+
+	//set edit item
+	editElement = e.currentTarget.parentElement.previousElementSibling
+
+	// set form value
+	grocery.value = editElement.innerHTML
+
+	editFlag = true
+	editID = element.dataset.id
+
+	//change value in submit
+	submitBtn.textContent = "edit"
 }
 
 // ****** LOCAL STORAGE **********
@@ -132,7 +150,8 @@ const addToLocalStorage = (id, value) => {
 const removeFromLocalStorage = id => {
 	console.log("removed from local storage")
 }
-// ****** SETUP ITEMS **********
+
+const editLocalStorage = (id, value) => {}
 
 // ****** EVENT LISTENERS **********
 // submit form
@@ -140,3 +159,5 @@ form.addEventListener("submit", addItem)
 
 //clear items
 clearBtn.addEventListener("click", clearItems)
+
+// ****** SETUP ITEMS **********
