@@ -6,14 +6,16 @@ const color = document.querySelector(".color")
 // hex numbers start with # eg #f15025
 btn.addEventListener("click", function () {
 	let hexColor = "#"
+
 	//set loop to run 6 times
 	for (let i = 0; i < 6; i++) {
 		hexColor += hex[getRandomNumber()]
 	}
+
 	color.textContent = hexColor
 	document.body.style.backgroundColor = hexColor
 })
 
-function getRandomNumber() {
+const getRandomNumber = () => {
 	return Math.floor(Math.random() * hex.length)
 }
