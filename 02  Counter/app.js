@@ -12,7 +12,9 @@ btns.forEach(function (btn) {
 
 	btn.addEventListener("click", function (e) {
 		// console.log(e.currentTarget.classList)
+
 		const styles = e.currentTarget.classList
+
 		if (styles.contains("decrease")) {
 			count--
 		} else if (styles.contains("increase")) {
@@ -21,15 +23,19 @@ btns.forEach(function (btn) {
 			count = 0
 		}
 
+		// change color of values
 		if (count > 0) {
 			value.style.color = "green"
 		}
+
 		if (count < 0) {
 			value.style.color = "red"
 		}
+
 		if (count === 0) {
 			value.style.color = "#333"
 		}
+
 		value.textContent = count
 	})
 })
