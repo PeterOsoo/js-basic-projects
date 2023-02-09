@@ -1,4 +1,4 @@
-// Option 1 . traversing the dom
+// Option 1 . traversing the dom - fancy way of moving up and down of the DOM tree
 
 // select question-btn & loop over them
 
