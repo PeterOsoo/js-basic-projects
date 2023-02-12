@@ -85,7 +85,15 @@ const menu = [
 		category: "dinner",
 		price: 250,
 		img: "./images/item-11.jpeg",
-		desc: `served in the choma spots .`,
+		desc: `served in the choma spots - Bypass.`,
+	},
+	{
+		id: 12,
+		title: "WHitecap ",
+		category: "beer",
+		price: 450,
+		img: "./images/item-12.jpeg",
+		desc: `served when cold prolly from a bar.`,
 	},
 ]
 
@@ -94,7 +102,7 @@ const sectionCenter = document.querySelector(".section-center")
 const container = document.querySelector(".btn-container")
 
 // load items
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", () => {
 	// console.log("rateng its working ")
 	displayMenuItems(menu)
 	displayMenuButtons()
@@ -148,15 +156,19 @@ const displayMenuButtons = () => {
 
 	// filter items
 	filterBtns.forEach(function (btn) {
-		btn.addEventListener("click", function (e) {
+		btn.addEventListener("click", e => {
 			// console.log(e.currentTarget.dataset.id)
+
 			const category = e.currentTarget.dataset.id
-			const menuCategory = menu.filter(function (menuItem) {
+
+			const menuCategory = menu.filter(menuItem => {
 				if (menuItem.category === category) {
 					return menuItem
 				}
 			})
-			console.log(menuCategory)
+
+			// console.log(menuCategory)
+
 			if (category == "all") {
 				displayMenuItems(menu)
 			} else {
