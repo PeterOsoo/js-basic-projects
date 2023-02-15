@@ -28,7 +28,7 @@ const deadline = document.querySelector(".deadline")
 const items = document.querySelectorAll(".deadline-format h4")
 
 // console.log(items)
-
+// set temp date that will always be 10 days ahead when we start project
 let tempDate = new Date()
 let tempYear = tempDate.getFullYear()
 let tempMonth = tempDate.getMonth()
