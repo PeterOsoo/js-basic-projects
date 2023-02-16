@@ -34,6 +34,7 @@ form.addEventListener("submit", e => {
 		// result.innerHTML = `<p class="result"> ${text[random]} </p> `
 		result.innerHTML = `<p class="result alert alert-dark alert-dismissible fade show"> The number for random paragraphs(input) should be greater than 0 and less than 10 </p>  `
 
+		// code from website ---> https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-alerts.php
 		error.innerHTML = `
 		<!-- Error Alert -->
 	<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
