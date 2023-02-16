@@ -30,7 +30,8 @@ form.addEventListener("submit", e => {
 	// >9
 
 	if (isNaN(value) || value <= 0 || value > 9) {
-		result.innerHTML = `<p class="result"> ${text[random]} </p>`
+		// result.innerHTML = `<p class="result"> ${text[random]} </p> `
+		result.innerHTML = `<p class="result"> The number for random paragraphs(input) should be greater than 0 and less than 10 </p> `
 	} else {
 		let tempText = text.slice(0, value)
 		// console.log(tempText)
