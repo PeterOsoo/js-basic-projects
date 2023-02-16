@@ -15,6 +15,7 @@ I just told you! You've killed me! Fry! Quit doing the right thing, you jerk! Mi
 const form = document.querySelector(".lorem-form")
 const amount = document.getElementById("amount")
 const result = document.querySelector(".lorem-text")
+const error = document.querySelector(".error")
 
 form.addEventListener("submit", e => {
 	e.preventDefault()
@@ -31,7 +32,15 @@ form.addEventListener("submit", e => {
 
 	if (isNaN(value) || value <= 0 || value > 9) {
 		// result.innerHTML = `<p class="result"> ${text[random]} </p> `
-		result.innerHTML = `<p class="result"> The number for random paragraphs(input) should be greater than 0 and less than 10 </p> `
+		result.innerHTML = `<p class="result alert alert-dark alert-dismissible fade show"> The number for random paragraphs(input) should be greater than 0 and less than 10 </p>  `
+
+		error.innerHTML = `
+		<!-- Error Alert -->
+	<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
+    	<i class="bi-exclamation-octagon-fill"></i>
+    	<strong class="mx-2">Error!</strong> A problem has been occurred while submitting your data.
+    	<button type="button" class="btn-close" data-bs-dismiss="alert"></button> 
+		</div>`
 	} else {
 		let tempText = text.slice(0, value)
 		// console.log(tempText)
