@@ -66,7 +66,7 @@ const clearItems = () => {
 		})
 	}
 	container.classList.remove("show-container")
-	displayAlert("empty list", "danger")
+	displayAlert("empty list - items cleared", "danger")
 
 	setBackToDefault()
 	localStorage.removeItem("list")
@@ -106,8 +106,9 @@ const deleteItem = e => {
 	}
 	displayAlert("item removed", "danger")
 	setBackToDefault()
+
 	// remove from local storage
-	// removeFromLocalStorage(id)
+	removeFromLocalStorage(id)
 }
 const editItem = e => {
 	const element = e.currentTarget.parentElement.parentElement
