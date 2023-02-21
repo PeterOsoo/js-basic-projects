@@ -42,4 +42,5 @@ const carousel = () => {
 	})
 }
 
+// hide prev button when slider project loads
 prevBtn.style.display = "none"
