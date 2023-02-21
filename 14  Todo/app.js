@@ -54,6 +54,7 @@ const addItem = e => {
 		setBackToDefault()
 	} else {
 		displayAlert("Please enter value", "danger")
+		submitBtn.textContent = "submit"
 	}
 }
 
@@ -96,6 +97,7 @@ const setBackToDefault = () => {
 	submitBtn.textContent = "submit"
 }
 
+// deleteItem
 const deleteItem = e => {
 	const element = e.currentTarget.parentElement.parentElement
 	const id = element.dataset.id
